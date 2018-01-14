@@ -7,7 +7,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping(value = "/users")
+@RequestMapping(value = "/utilisateurs")
 public class UtilisateurController {
     private List<Utilisateur> utilisateurs = new ArrayList();
 
