@@ -1,4 +1,4 @@
-package com.snack.snackproject;
+package com.snack.snackproject.Beans;
 
 public class Utilisateur {
 
@@ -21,9 +21,7 @@ public class Utilisateur {
 
     public void setNom(String nom) { this.nom = nom; }
 
-    public String getPrenom() {
-        return prenom;
-    }
+    public String getPrenom() { return prenom; }
 
     public void setPrenom(String prenom) {
         this.prenom = prenom;

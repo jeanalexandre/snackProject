@@ -1,5 +1,6 @@
-package com.snack.snackproject;
+package com.snack.snackproject.Services;
 
+import com.snack.snackproject.Beans.Utilisateur;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -7,7 +8,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping(value = "/users")
+@RequestMapping(value = "/utilisateurs")
 public class UtilisateurController {
     private List<Utilisateur> utilisateurs = new ArrayList();
 
@@ -62,6 +63,7 @@ public class UtilisateurController {
 
     }
 
+    //Mock
     List<Utilisateur> buildUtilisateurs() {
         List<Utilisateur> utilisateurs = new ArrayList<>();
 

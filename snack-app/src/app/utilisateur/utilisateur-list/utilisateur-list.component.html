@@ -11,7 +11,7 @@
 
             </div>
             <div class="col-md-2">
-
+              <button type="button" class="btn btn-primary" (click)="redirectNouvelUtilisateurPage()">Ajouter un Utilisateur</button>
             </div>
           </div>
 
@@ -20,7 +20,7 @@
 
       <section class="main">
 
-        <table class="table" *ngIf="users">
+        <table class="table" *ngIf="utilisateurs">
           <thead>
           <tr>
             <th>#</th>
@@ -31,18 +31,20 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let user of users">
-            <th scope="row">{{user.id}}</th>
-            <td>{{user.nom}}</td>
-            <td>{{user.prenom}}</td>
-            <td>{{user.email}}</td>
+          <tr *ngFor="let utilisateur of utilisateurs">
+            <th scope="row">{{utilisateur.id}}</th>
+            <td>{{utilisateur.nom}}</td>
+            <td>{{utilisateur.prenom}}</td>
+            <td>{{utilisateur.email}}</td>
+
             <td>
+              <button type="button" class="btn btn-success" (click)="modifierUtilisateurPage(utilisateur)">Modifier</button>
+              <button type="button" class="btn btn-danger" (click)="supprimerUtilisateur(utilisateur)">Supprimer</button>
             </td>
           </tr>
-
           </tbody>
         </table>
-        <span *ngIf="!users">Pas d'utilisateurs enregistrés</span>
+        <span *ngIf="!utilisateurs">Pas d'utilisateurs enregistrés</span>
       </section>
     </div>
   </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UtilisateurService} from "../utilisateur.service";
 import {Utilisateur} from "../utilisateur";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-utilisateur-list',
@@ -10,24 +11,47 @@ import {Utilisateur} from "../utilisateur";
 })
 export class UtilisateurListComponent implements OnInit {
 
-  private users: Utilisateur[]
+  private utilisateurs: Utilisateur[]
 
-  constructor(private userService: UtilisateurService) { }
+  constructor(private router: Router ,
+              private utilisateurService: UtilisateurService) { }
 
   ngOnInit() {
     this.getAllUsers();
   }
 
   getAllUsers() {
-    this.userService.findAll().subscribe(
-      users => {
-        this.users = users;
+    this.utilisateurService.findAll().subscribe(
+      utilisateurs => {
+        this.utilisateurs = utilisateurs;
       },
       err => {
         console.log(err);
       }
 
     );
+  }
+
+  redirectNouvelUtilisateurPage() {
+    this.router.navigate(['/utilisateur/creer']);
+  }
+
+  modifierUtilisateurPage(utilisateur: Utilisateur) {
+    if (utilisateur) {
+      this.router.navigate(['/utilisateur/modifier', utilisateur.id]);
+    }
+  }
+
+  supprimerUtilisateur(utilisateur: Utilisateur) {
+    if (utilisateur) {
+      this.utilisateurService.deleteUserById(utilisateur.id).subscribe(
+        res => {
+          this.getAllUsers();
+          this.router.navigate(['/utilisateurs']);
+          console.log('done');
+        }
+      )
+    }
   }
 
 }
