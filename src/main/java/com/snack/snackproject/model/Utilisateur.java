@@ -1,7 +1,11 @@
 package com.snack.snackproject.model;
 
+import javax.persistence.*;
+@Entity
 public class Utilisateur {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nom;
     private String prenom;

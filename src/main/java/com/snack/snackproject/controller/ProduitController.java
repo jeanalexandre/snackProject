@@ -2,6 +2,7 @@ package com.snack.snackproject.controller;
 
 
 import com.snack.snackproject.model.Produit;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping(value = "/produits")
+@Controller
 public class ProduitController {
 
     private List<Produit> produits = new ArrayList();

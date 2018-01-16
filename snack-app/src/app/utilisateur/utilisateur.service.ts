@@ -40,4 +40,8 @@ export class UtilisateurService {
       .catch((error:any) => Observable.throw(error.json().error || 'Erreur serveur'));
   }
 
+  connectUser(utilisateur: Utilisateur): Observable<Utilisateur> {
+    return this.http.post(this.apiUrl = 'connect', utilisateur)
+      .catch((error:any) => Observable.throw(error.json().error || 'Erreur serveur'));
+  }
 }
