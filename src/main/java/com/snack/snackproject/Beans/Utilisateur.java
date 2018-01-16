@@ -1,4 +1,4 @@
-package com.snack.snackproject;
+package com.snack.snackproject.Beans;
 
 public class Utilisateur {
 
