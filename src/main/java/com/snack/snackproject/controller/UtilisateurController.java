@@ -1,17 +1,23 @@
 package com.snack.snackproject.controller;
 
+import com.snack.snackproject.model.Panier;
 import com.snack.snackproject.model.Utilisateur;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.rmi.CORBA.Util;
 import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping(value = "/utilisateurs")
+@Controller
 public class UtilisateurController {
     private List<Utilisateur> utilisateurs = new ArrayList();
 
+    private Utilisateur currentUser = new Utilisateur();
 
     UtilisateurController() {
         this.utilisateurs = buildUtilisateurs();
@@ -38,7 +44,6 @@ public class UtilisateurController {
         utilisateur.setId(nextId);
         this.utilisateurs.add(utilisateur);
         return utilisateur;
-
     }
 
     @RequestMapping(method = RequestMethod.PUT)
@@ -67,13 +72,13 @@ public class UtilisateurController {
     List<Utilisateur> buildUtilisateurs() {
         List<Utilisateur> utilisateurs = new ArrayList<>();
 
-        Utilisateur utilisateur1 = buildUtilisateur(1L, "Florian", "Blot", "florian.blot@gmail.com");
-        Utilisateur utilisateur2 = buildUtilisateur(2L, "Fabien", "Dubois", "fabien.dubois@gmail.com");
-        Utilisateur utilisateur3 = buildUtilisateur(3L, "Evan", "Martho", "evan.martho@gmail.com");
-        Utilisateur utilisateur4 = buildUtilisateur(4L, "Antoine", "Rato", "antoine.rato@gmail.com");
-        Utilisateur utilisateur5 = buildUtilisateur(5L, "Jean-Alexandre", "Gautreau", "jeanalexandre.gautreau@gmail.com");
-        Utilisateur utilisateur6 = buildUtilisateur(6L, "Nael", "ABC", "nael.abc.gautreau@gmail.com");
-        Utilisateur utilisateur7 = buildUtilisateur(7L, "Loic", "Colin", "loic.colin.gautreau@gmail.com");
+        Utilisateur utilisateur1 = buildUtilisateur(1L, "Florian", "Blot", "florian.blot@gmail.com", new Panier());
+        Utilisateur utilisateur2 = buildUtilisateur(2L, "Fabien", "Dubois", "fabien.dubois@gmail.com", new Panier());
+        Utilisateur utilisateur3 = buildUtilisateur(3L, "Evan", "Martho", "evan.martho@gmail.com", new Panier());
+        Utilisateur utilisateur4 = buildUtilisateur(4L, "Antoine", "Rato", "antoine.rato@gmail.com", new Panier());
+        Utilisateur utilisateur5 = buildUtilisateur(5L, "Jean-Alexandre", "Gautreau", "jeanalexandre.gautreau@gmail.com", new Panier());
+        Utilisateur utilisateur6 = buildUtilisateur(6L, "Nael", "ABC", "nael.abc.gautreau@gmail.com", new Panier());
+        Utilisateur utilisateur7 = buildUtilisateur(7L, "Loic", "Colin", "loic.colin.gautreau@gmail.com", new Panier());
 
 
         utilisateurs.add(utilisateur1);
@@ -88,12 +93,13 @@ public class UtilisateurController {
 
     }
 
-    Utilisateur buildUtilisateur(Long id, String nom, String prenom, String email) {
+    Utilisateur buildUtilisateur(Long id, String nom, String prenom, String email, Panier panier) {
         Utilisateur utilisateur = new Utilisateur();
         utilisateur.setId(id);
         utilisateur.setNom(nom);
         utilisateur.setPrenom(prenom);
         utilisateur.setEmail(email);
+        utilisateur.setPanier(panier);
         return utilisateur;
     }
 }

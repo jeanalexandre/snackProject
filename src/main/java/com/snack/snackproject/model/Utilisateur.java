@@ -1,11 +1,20 @@
 package com.snack.snackproject.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Utilisateur {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nom;
     private String prenom;
     private String email;
+    private Panier panier;
 
     public Long getId() {
         return id;
@@ -34,4 +43,8 @@ public class Utilisateur {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public Panier getPanier() { return panier; }
+
+    public void setPanier(Panier panier) { this.panier = panier; }
 }
