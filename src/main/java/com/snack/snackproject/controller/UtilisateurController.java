@@ -1,5 +1,6 @@
-package com.snack.snackproject;
+package com.snack.snackproject.controller;
 
+import com.snack.snackproject.model.Utilisateur;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -62,6 +63,7 @@ public class UtilisateurController {
 
     }
 
+    //Mock
     List<Utilisateur> buildUtilisateurs() {
         List<Utilisateur> utilisateurs = new ArrayList<>();
 
