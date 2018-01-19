@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <section>
+        <header class="header">
+          <div class="row">
+            <div class="col-md-4">
+              <h1>Produits</h1>
+            </div>
+            <div class="col-md-6">
+
+            </div>
+            <div class="col-md-2">
+              <button type="button" class="btn btn-primary" (click)="redirectNouveauProduitPage()">Ajouter un Produit</button>
+            </div>
+          </div>
+
+        </header>
+      </section>
+
+      <section class="main">
+
+        <table class="table" *ngIf="produits">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Nom</th>
+            <th>Description</th>
+            <th>Prix</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let produit of produits">
+            <th scope="row">{{produit.id}}</th>
+            <td>{{produit.nom}}</td>
+            <td>{{produit.description}}</td>
+            <td>{{produit.prix}}</td>
+
+            <td>
+              <button type="button" class="btn btn-success" (click)="modifierProduitPage(produit)">Modifier</button>
+              <button type="button" class="btn btn-danger" (click)="supprimerProduit(produit)">Supprimer</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <span *ngIf="!produits">Pas de produits enregistrés</span>
+      </section>
+    </div>
+  </div>
+</div>

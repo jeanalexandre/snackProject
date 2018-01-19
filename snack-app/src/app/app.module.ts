@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {UtilisateurModule} from "./utilisateur/utilisateur.module";
 import {HttpModule} from "@angular/http";
+import {ProduitModule} from "./produit/produit.module";
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import {HttpModule} from "@angular/http";
     BrowserModule,
     AppRoutingModule,
     UtilisateurModule,
+    ProduitModule,
     HttpModule
   ],
   providers: [],
