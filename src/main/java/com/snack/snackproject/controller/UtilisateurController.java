@@ -1,17 +1,22 @@
-package com.snack.snackproject.Services;
+package com.snack.snackproject.controller;
 
-import com.snack.snackproject.Beans.Utilisateur;
+import com.snack.snackproject.model.Utilisateur;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping(value = "/utilisateurs")
+@Controller
 public class UtilisateurController {
     private List<Utilisateur> utilisateurs = new ArrayList();
 
+    private Utilisateur currentUser = new Utilisateur();
 
     UtilisateurController() {
         this.utilisateurs = buildUtilisateurs();
@@ -38,7 +43,6 @@ public class UtilisateurController {
         utilisateur.setId(nextId);
         this.utilisateurs.add(utilisateur);
         return utilisateur;
-
     }
 
     @RequestMapping(method = RequestMethod.PUT)

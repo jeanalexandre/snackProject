@@ -3,45 +3,43 @@ import {Observable} from "rxjs/Observable";
 import { Http, Response } from "@angular/http";
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/catch';
-import {Utilisateur} from "./utilisateur";
+import {Produit} from "./produit";
+
 
 @Injectable()
-export class UtilisateurService {
+export class ProduitService {
 
-  private apiUrl = 'http://localhost:8080/utilisateurs';
+  private apiUrl = 'http://localhost:8080/produits';
 
   constructor(private http: Http) { }
 
-  findAll(): Observable<Utilisateur[]>  {
+  findAll(): Observable<Produit[]>  {
     return this.http.get(this.apiUrl)
       .map((res:Response) => res.json())
       .catch((error:any) => Observable.throw(error.json().error || 'Erreur serveur'));
   }
 
-  findById(id: number): Observable<Utilisateur> {
+  findById(id: number): Observable<Produit> {
     return this.http.get(this.apiUrl + '/' + id)
       .map((res:Response) => res.json())
       .catch((error:any) => Observable.throw(error.json().error || 'Erreur serveur'))
   }
 
-  saveUser(utilisateur: Utilisateur): Observable<Utilisateur> {
-    return this.http.post(this.apiUrl, utilisateur)
+  saveProduit(produit: Produit): Observable<Produit> {
+    return this.http.post(this.apiUrl, produit)
       .catch((error:any) => Observable.throw(error.json().error || 'Erreur serveur'));
   }
 
-  deleteUserById(id: number): Observable<boolean> {
+  deleteProduitById(id: number): Observable<boolean> {
     return this.http.delete(this.apiUrl + '/' + id)
       .map((res:Response) => res.json())
       .catch((error:any) => Observable.throw(error.json().error || 'Erreur serveur'));
   }
 
-  updateUser(utilisateur: Utilisateur): Observable<Utilisateur> {
-    return this.http.put(this.apiUrl, utilisateur)
+
+  updateProduit(produit: Produit): Observable<Produit> {
+    return this.http.put(this.apiUrl, produit)
       .catch((error:any) => Observable.throw(error.json().error || 'Erreur serveur'));
   }
 
-  connectUser(utilisateur: Utilisateur): Observable<Utilisateur> {
-    return this.http.post(this.apiUrl = 'connect', utilisateur)
-      .catch((error:any) => Observable.throw(error.json().error || 'Erreur serveur'));
-  }
 }
